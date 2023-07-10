@@ -1,9 +1,12 @@
 import { gsap } from 'gsap';
+import { Observer } from 'gsap/Observer';
+
+gsap.registerPlugin(Observer);
 
 export function scrollSlide(motionConfig: any) {
   const { targets, speed, step } = motionConfig;
 
-  gsap
+  return gsap
     .timeline({ defaults: { duration: 1 / speed } })
     .to(targets, { x: `+=${-step}` })
     .to(
@@ -17,11 +20,11 @@ export function scrollSlide(motionConfig: any) {
     .to(
       targets,
       {
-        duration: 0.6 / speed,
+        duration: 0.4 / speed,
         skewX: 0,
         ease: 'power1.out'
       },
-      `<${0.5 / speed}`
+      `<${0.6 / speed}`
     )
     .eventCallback(
       'onComplete',
@@ -57,7 +60,7 @@ export function setSlidesHoverAction(slides: any) {
 //
 // helper functions
 //
-function setOffscreenTargetsPosition(motionConfig: any) {
+export function setOffscreenTargetsPosition(motionConfig: any) {
   const { targets, targetsGap, step } = motionConfig;
 
   targets.forEach((target: any) => {

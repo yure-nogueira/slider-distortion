@@ -36,6 +36,7 @@
     // height: 50%;
     // overflow-x: scroll;
     overflow-x: hidden;
+    -webkit-user-drag: none;
 
     &--backup {
       // border: 10px solid red;
